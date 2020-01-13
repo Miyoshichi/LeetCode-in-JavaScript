@@ -1,6 +1,6 @@
 # 双指针
-* [1. 两数之和](#1.两数之和)
-* [2. 平方数之和](#2.平方数之和)
+* [1. 两数之和](#1两数之和)
+* [2. 平方数之和](#2平方数之和)
 
 # 1.两数之和
 [#167 两数之和 II - 输入有序数组（简单）](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/description/)

@@ -17,7 +17,7 @@
 解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。
 ```
 
-[解答](/src/two-sum-ii-input-array-is-sorted.js)
+[解答](src/two-sum-ii-input-array-is-sorted.js)
 
 ```JavaScript
 var twoSum = (numbers, target) => {
@@ -55,7 +55,7 @@ var twoSum = (numbers, target) => {
 输出: False
 ```
 
-[解答](/src/sum-of-square-numbers.js)
+[解答](src/sum-of-square-numbers.js)
 
 ```JavaScript
 var judgeSquareSum = (c) => {

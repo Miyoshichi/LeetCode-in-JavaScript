@@ -117,3 +117,46 @@ var reverseVowels = s => {
 
 首先从输入的字符串头部向后依次遍历字符串中的字母，直至当前字母为元音。当该字母为元音时，从字符串尾部向前依次遍历字符串中的字母，直至当前字母也为元音，并交换两字母。直至前后遍历的字母重合时，停止遍历。  
 时间复杂度：O(n)，每个元素至多被访问一次；空间复杂度：O(1)。
+
+# 4.验证回文字符串
+
+[#680 验证回文字符串 Ⅱ（简单）](https://leetcode-cn.com/problems/valid-palindrome-ii/)
+
+给定一个非空字符串 s，最多删除一个字符。判断是否能成为回文字符串。  
+示例 1:
+```html
+输入: "aba"
+输出: True
+```
+示例 2:
+```html
+输入: "abca"
+输出: True
+解释: 你可以删除c字符。
+```
+
+[解答](src/valid-palindrome-ii.js)
+
+```JavaScript
+var validPalindrome = s => {
+    let isPalindrome = (s, lo = 0, hi = s.length - 1) => {
+        for (; lo < hi; lo++, hi--) {
+            if (s[lo] != s[hi]) {
+                let bool = false
+                return {lo: lo, hi: hi, bool: bool}
+            }
+        }
+        let bool = true
+        return {lo: lo, hi: hi, bool: bool}
+    }    
+    if (isPalindrome(s).bool) {
+        return true
+    } else {
+        let [lo, hi] = [isPalindrome(s).lo, isPalindrome(s).hi]
+        return isPalindrome(s, lo + 1, hi).bool || isPalindrome(s, lo, hi - 1).bool
+    }
+}
+```
+
+首先判断输入的字符串是否是回文字符串：使用两个指针，一个从左至右遍历，一个从右至左遍历，这两个指针每同时移动一个位置，判断当前字母是否相同。如果遍历结束后都相同，则这个字符串是回文字符串。当存在不同时，可以使左边的指针向右移动一个位置，或使右边的指针向左移动一个位置跳过当前字母，并判断两个指针中间剩余的字符串是否为回文字符串，相当于删除了当前字母。如果剩余字符串是回文字符串，则原字符串可删除一个字母成为回文字符串；如果剩余字符串还不是回文字符串，则说明原字符串即便删除一个字母后，仍然不是回文字符串。
+时间复杂度：O(N)，每个字母至多被访问一次；空间复杂度：O(1)。

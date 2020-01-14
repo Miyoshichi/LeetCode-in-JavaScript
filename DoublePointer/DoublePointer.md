@@ -59,7 +59,7 @@ var twoSum = (numbers, target) => {
 [解答](src/sum-of-square-numbers.js)
 
 ```JavaScript
-var judgeSquareSum = (c) => {
+var judgeSquareSum = c => {
     for (a = 0; a * a <= c; a++) {
         b = Math.sqrt(c - a * a)
         if (b == Math.floor(b)) {

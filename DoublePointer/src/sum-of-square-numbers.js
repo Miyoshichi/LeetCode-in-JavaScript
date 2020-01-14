@@ -3,7 +3,7 @@
  * @return {boolean}
  */
 
-var judgeSquareSum = (c) => {
+var judgeSquareSum = c => {
     for (a = 0; a * a <= c; a++) {
         b = Math.sqrt(c - a * a)
         if (b == Math.floor(b)) {

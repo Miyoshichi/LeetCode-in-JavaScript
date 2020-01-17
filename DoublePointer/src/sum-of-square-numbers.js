@@ -13,7 +13,7 @@ var judgeSquareSum = c => {
     return false
 }
 
-//test
+// test
 var c = 5
 console.log(judgeSquareSum(c))
 var c = 3

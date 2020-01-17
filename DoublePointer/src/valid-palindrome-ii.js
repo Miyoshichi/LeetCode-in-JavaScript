@@ -2,6 +2,7 @@
  * @param {string} s
  * @return {boolean}
  */
+
 var validPalindrome = s => {
 
     let isPalindrome = (s, lo = 0, hi = s.length - 1) => {
@@ -24,6 +25,6 @@ var validPalindrome = s => {
 
 }
 
-//test
+// test
 var s = 'abva'
 console.log(validPalindrome(s))

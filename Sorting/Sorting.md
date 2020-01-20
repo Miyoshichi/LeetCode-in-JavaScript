@@ -56,3 +56,46 @@ var findKthLargest = (nums, k) => {
 # 2. 前K个高频元素
 
 [#347 前K个高频元素](https://leetcode-cn.com/problems/top-k-frequent-elements/)
+
+给定一个非空的整数数组，返回其中出现频率前 k 高的元素。  
+示例 1:
+```html
+输入: nums = [1,1,1,2,2,3], k = 2
+输出: [1,2]
+```
+示例 2:
+```html
+输入: nums = [1], k = 1
+输出: [1]
+```
+
+[解答](src/top-k-frequent-elements.js)
+
+```JavaScript
+var topKFrequent = (nums, k) => {
+    nums.sort((a, b) => a - b)
+    nums.push(NaN)
+    const frequency = [0]
+    let j = 0
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] !== nums[i - 1]) {
+            frequency.push(i - j)
+            j = i
+        }
+    }
+    const topK = []
+    let index = 0
+    const topKthFrequent = frequency.slice()
+    topKthFrequent.sort((a, b) => b - a).splice(k)
+    for (let i = 0; i < frequency.length; i++) {
+        index += frequency[i]
+        if (topKthFrequent.indexOf(frequency[i]) > -1) {
+            topK.push(nums[index - 1])
+        }
+    }
+    return topK
+}
+```
+
+首先对输入数组排序，计算数组中每个元素出现的频率后，输出到一个新的数组内。然后将频率数组排序后选取前 k 大的元素，即代表原输入数组中前 k 个高频元素的频率。因为原输入数组已经是有序数组，因此根据这些频率数组照片中元素的位置，即可推导出所对应的原输入数组的元素。
+时间复杂度：O(NlogN);空间复杂度：O(K)。

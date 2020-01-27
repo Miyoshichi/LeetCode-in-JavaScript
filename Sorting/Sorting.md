@@ -142,7 +142,7 @@ var frequencySort = s => {
         })
     }
     frequency.sort((a, b) => b.number - a.number)
-    return frequency.map(item => (item.chara.repeat(item.number))).join('')
+    return frequency.map(item => item.chara.repeat(item.number)).join('')
 }
 ```
 

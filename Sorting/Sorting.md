@@ -97,5 +97,54 @@ var topKFrequent = (nums, k) => {
 }
 ```
 
-首先对输入数组排序，计算数组中每个元素出现的频率后，输出到一个新的数组内。然后将频率数组排序后选取前 k 大的元素，即代表原输入数组中前 k 个高频元素的频率。因为原输入数组已经是有序数组，因此根据这些频率数组照片中元素的位置，即可推导出所对应的原输入数组的元素。
-时间复杂度：O(NlogN);空间复杂度：O(K)。
+首先对输入数组排序，计算数组中每个元素出现的频率后，输出到一个新的数组内。然后将频率数组排序后选取前 k 大的元素，即代表原输入数组中前 k 个高频元素的频率。因为原输入数组已经是有序数组，因此根据这些频率数组照片中元素的位置，即可推导出所对应的原输入数组的元素。  
+时间复杂度：O(NlogN)；空间复杂度：O(K)。
+
+# 3. 根据字符出现频率排序
+
+[#451 根据字符出现频率排序](https://leetcode-cn.com/problems/sort-characters-by-frequency/)
+
+给定一个字符串，请将字符串里的字符按照出现的频率降序排列。  
+示例 1:
+```html
+输入:
+"tree"
+输出:
+"eert"
+```
+示例 2:
+```html
+输入:
+"cccaaa"
+输出:
+"cccaaa"
+```
+示例 3:
+```html
+输入:
+"Aabb"
+输出:
+"bbAa"
+```
+
+[解答](src/sort-characters-by-frequency.js)
+
+```JavaScript
+var frequencySort = s => {
+    s = s.split('')
+    const number = {}
+    const frequency = []
+    s.forEach(item => number[item] ? number[item] += 1 : number[item] = 1)
+    for (let item in number) {
+        frequency.push({
+            chara: item,
+            number: number[item]
+        })
+    }
+    frequency.sort((a, b) => b.number - a.number)
+    return frequency.map(item => (item.chara.repeat(item.number))).join('')
+}
+```
+
+首先统计输入字符串中各个字母的出现次数，并保存为一个对象，对象中每个元素的两个值分别为字母及其出现的次数。将这个对象按照字母的出现次数排序后，将字母按照出现次数提取出来。  
+时间复杂度：O(N)；空间复杂度O(2K)。

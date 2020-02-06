@@ -4,7 +4,7 @@
 # 算法思想
 * [双指针](DoublePointer/DoublePointer.md)
 * [排序](Sorting/Sorting.md)
-* [贪心思想]()
+* [贪心算法](GreedyAlgorithm/GreedyAlgorithm.md)
 * [二分查找]()
 * [分治]()
 * [搜索]()

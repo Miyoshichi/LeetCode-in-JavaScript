@@ -148,3 +148,44 @@ let reconstructQueue = people => {
 
 首先将这一群人按照从高到矮（即 h 从大到小）、相同高度时按照人数从少到多（即 h 从小到大）的顺序排序，接着按照此顺序以及将人放置在对应的位置上，由于 k 表示的是排在这个人前面且身高大于或等于他的人数，比他矮的人不包含在 k 中，因此当 k 相同时，矮的人可以插在高的人前面，而不会与 k 的数值冲突。  
 时间复杂度：O(N^2)：因为需要将原来的人按顺序插入队列；空间复杂度：O(N)。
+
+# 5. 买卖股票的最佳时机
+
+[#121 买卖股票的最佳时机（简单）](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/)
+
+给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。  
+如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。  
+注意你不能在买入股票前卖出股票。  
+示例 1:
+```html
+输入: [7,1,5,3,6,4]
+输出: 5
+```
+示例 2:
+```html
+输入: [7,6,4,3,1]
+输出: 0
+```
+
+[解答](src/best-time-to-buy-and-sell-stock.js)
+
+```JavaScript
+let maxProfit = prices => {
+    let maxProfit = 0
+    let lowPrice = prices[0]
+    for (let i = 1; i < prices.length; i ++) {
+        if (prices[i] <= lowPrice) {
+            lowPrice = prices[i]
+        } else {
+            let currProfit = prices[i] - lowPrice
+            if (currProfit > maxProfit) {
+                maxProfit = currProfit
+            }
+        }
+    }
+    return maxProfit
+}
+```
+
+若要使买卖股票收益最大化，需要在相对低的价格时买入，在相对高的价格时卖出。首先假设第一天的价格为最低价格，此时的最大收益为0。向后遍历股票价格，当价格低于当前的最低价格时，将当前价格设定为最低价格；当价格高于当前的最低价格时，计算当前的收益，即当前价格减去最低价格，若收益高于最大收益，则更新最大收益。最后即为求得的最大收益。  
+时间复杂度：O(N)：只遍历一次；空间复杂度：O(1)。

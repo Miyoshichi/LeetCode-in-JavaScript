@@ -6,6 +6,7 @@
 * [4. 根据身高重建队列](#4-根据身高重建队列)
 * [5. 买卖股票的最佳时机](#5-买卖股票的最佳时机)
 * [6. 买卖股票的最佳时机 II](#6-买卖股票的最佳时机-II)
+* [7. 种花问题](#7-种花问题)
 
 # 1. 分发饼干
 
@@ -236,3 +237,52 @@ let maxProfit = prices => {
 
 因为可以对股票进行多次交易，因此当股票价格高于当前的买入价格时，即售出，否则遍历至下一个价格。当当前股票价格低于买入价格时，将当前价格作为买入价格买入，然后继续遍历。  
 时间复杂度：O(N)：只遍历一次；空间复杂度：O(1)。
+
+# 7. 种花问题
+
+[#605 种花问题（简单）](https://leetcode-cn.com/problems/can-place-flowers/)
+
+假设你有一个很长的花坛，一部分地块种植了花，另一部分却没有。可是，花卉不能种植在相邻的地块上，它们会争夺水源，两者都会死去。  
+给定一个花坛（表示为一个数组包含0和1，其中0表示没种植花，1表示种植了花），和一个数 n 。能否在不打破种植规则的情况下种入 n 朵花？能则返回True，不能则返回False。  
+示例 1:
+```html
+输入: flowerbed = [1,0,0,0,1], n = 1
+输出: True
+```
+示例 2:
+```html
+输入: flowerbed = [1,0,0,0,1], n = 2
+输出: False
+```
+
+[解答](src/can-place-flowers.js)
+
+```JavaScript
+let canPlaceFlowers = (flowerbed, n) => {
+    let canPlace = 0
+    for (let i = 0; i < flowerbed.length; i++) {
+        if (flowerbed[i] === 0) {
+            if (flowerbed.length === 1) {
+                canPlace += 1
+                flowerbed[i] = 1
+            } else if (i === 0 && flowerbed[i+1] === 0) {
+                canPlace += 1
+                flowerbed[i] = 1
+            } else if (i === flowerbed.length - 1 && flowerbed[i-1] === 0) {
+                canPlace += 1
+                flowerbed[i] = 1
+            } else if (flowerbed[i-1] === 0 && flowerbed[i+1] === 0) {
+                canPlace += 1
+                flowerbed[i] = 1
+            }
+        }
+        if (canPlace <= n) {
+            return true
+        }
+    }
+    return false
+}
+```
+
+从左至右扫描代表花坛的数组，如果数组中有一个0，即代表当前位置没有花时，查看这个位置的左右是否也是0，即没有花，如果是则可以在这个位置种花，并将0修改为1，并为可种花的数量加1。对于数组的第一个和最后一个位置，只需考虑一侧是否为0。当扫描花坛数组时，当可种花的数量已经达到需要种花的数量时，可以直接跳出循环并返回true。  
+时间复杂度：O(N)：只遍历一次；空间复杂度O(1)。

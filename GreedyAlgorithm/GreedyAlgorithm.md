@@ -7,6 +7,7 @@
 * [5. 买卖股票的最佳时机](#5-买卖股票的最佳时机)
 * [6. 买卖股票的最佳时机 II](#6-买卖股票的最佳时机-II)
 * [7. 种花问题](#7-种花问题)
+* [8. 判断子序列](#8-判断子序列)
 
 # 1. 分发饼干
 
@@ -285,4 +286,47 @@ let canPlaceFlowers = (flowerbed, n) => {
 ```
 
 从左至右扫描代表花坛的数组，如果数组中有一个0，即代表当前位置没有花时，查看这个位置的左右是否也是0，即没有花，如果是则可以在这个位置种花，并将0修改为1，并为可种花的数量加1。对于数组的第一个和最后一个位置，只需考虑一侧是否为0。当扫描花坛数组时，当可种花的数量已经达到需要种花的数量时，可以直接跳出循环并返回true。  
+时间复杂度：O(N)：只遍历一次；空间复杂度O(1)。
+
+# 8. 判断子序列
+
+[#392 判断子序列](https://leetcode-cn.com/problems/is-subsequence/)
+
+给定字符串 s 和 t ，判断 s 是否为 t 的子序列。  
+你可以认为 s 和 t 中仅包含英文小写字母。字符串 t 可能会很长（长度 ~= 500,000），而 s 是个短字符串（长度 <=100）。  
+字符串的一个子序列是原始字符串删除一些（也可以不删除）字符而不改变剩余字符相对位置形成的新字符串。（例如，"ace"是"abcde"的一个子序列，而"aec"不是）。
+```html
+示例 1:
+s = "abc", t = "ahbgdc"
+返回 true.
+```
+示例 2:
+```html
+s = "axc", t = "ahbgdc"
+返回 false.
+```
+
+[解答](src/is-subsequence.js)
+
+```JavaScript
+let isSubsequence = (s, t) => {
+    let previous = -1
+    let falseNum = 0
+    let sArr = s.split('')
+    sArr.forEach((element) => {
+        let current = t.indexOf(element, previous + 1)
+        if (current <= previous) {
+            falseNum += 1
+        }
+        previous = current
+    })
+    if (falseNum > 0) {
+        return false
+    } else {
+        return true
+    }
+}
+```
+
+在字符串t中寻找组成字符串s的每个字母。按照字符串s中字母的顺序，查找字符串t中是否存在对应的字母。如果存在，则从下一个位置继续寻找字符串s中的字母；如果不存在，则说明字符串s不是字符串t的子序列。  
 时间复杂度：O(N)：只遍历一次；空间复杂度O(1)。

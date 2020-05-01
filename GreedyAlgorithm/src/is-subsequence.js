@@ -15,11 +15,12 @@ let isSubsequence = (s, t) => {
         }
         previous = current
     })
-    if (falseNum > 0) {
-        return false
-    } else {
-        return true
-    }
+    // if (falseNum > 0) {
+    //     return false
+    // } else {
+    //     return true
+    // }
+    return falseNum <= 0
 }
 
 // test

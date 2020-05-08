@@ -3,7 +3,7 @@
  * @return {number}
  */
 
-let findMinArrowShots = points => {
+const findMinArrowShots = points => {
     points.sort((a, b) => a[1] - b[1])
     points.length === 0 ? arrows = 0 : (arrows = 1, firstEnd = points[0][1])
     for (const point of points) {

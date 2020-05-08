@@ -3,7 +3,7 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 
-var sortColors = nums => {
+const sortColors = nums => {
     const elementNum = {}
     const colors = []
     nums.forEach(element => {

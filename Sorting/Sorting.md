@@ -26,7 +26,7 @@
 [解答](src/kth-largest-element-in-an-array-1.js)
 
 ```JavaScript
-var findKthLargest = (nums, k) => {
+const findKthLargest = (nums, k) => {
     nums.sort((a, b) => b - a)
     return nums[k - 1]
 }
@@ -40,7 +40,7 @@ var findKthLargest = (nums, k) => {
 [解答](src/kth-largest-element-in-an-array-2.js)
 
 ```JavaScript
-var findKthLargest = (nums, k) => {
+const findKthLargest = (nums, k) => {
     let topK = nums.splice(0, k)
     for (let i = 0; i < nums.length; i++) {
         if (nums[i] > Math.min(...topK)) {
@@ -74,7 +74,7 @@ var findKthLargest = (nums, k) => {
 [解答](src/top-k-frequent-elements.js)
 
 ```JavaScript
-var topKFrequent = (nums, k) => {
+const topKFrequent = (nums, k) => {
     nums.sort((a, b) => a - b)
     nums.push(NaN)
     const frequency = [0]
@@ -132,7 +132,7 @@ var topKFrequent = (nums, k) => {
 [解答](src/sort-characters-by-frequency.js)
 
 ```JavaScript
-var frequencySort = s => {
+const frequencySort = s => {
     s = s.split('')
     const number = {}
     const frequency = []
@@ -168,7 +168,7 @@ var frequencySort = s => {
 [解答](src/sort-colors-1.js)
 
 ```JavaScript
-var sortColors = nums => {
+const sortColors = nums => {
     const elementNum = {}
     const colors = []
     nums.forEach(element => {
@@ -193,7 +193,7 @@ var sortColors = nums => {
 [解答](src/sort-colors-2.js)
 
 ```JavaScript
-var sortColors = nums => {
+const sortColors = nums => {
     let p0 = 0, curr = 0, p2 = nums.length - 1
     for (;curr <= p2;) {
         if (nums[curr] === 0) {

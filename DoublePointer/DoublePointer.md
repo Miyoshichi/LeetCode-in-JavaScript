@@ -25,9 +25,9 @@
 [解答](src/two-sum-ii-input-array-is-sorted.js)
 
 ```JavaScript
-var twoSum = (numbers, target) => {
-    var lo = 0
-    var hi = numbers.length - 1
+const twoSum = (numbers, target) => {
+    let lo = 0
+    let hi = numbers.length - 1
     while (lo < hi) {
         if (numbers[lo] + numbers[hi] < target) {
             lo += 1
@@ -64,7 +64,7 @@ var twoSum = (numbers, target) => {
 [解答](src/sum-of-square-numbers.js)
 
 ```JavaScript
-var judgeSquareSum = c => {
+const judgeSquareSum = c => {
     for (a = 0; a * a <= c; a++) {
         b = Math.sqrt(c - a * a)
         if (b == Math.floor(b)) {
@@ -98,10 +98,10 @@ var judgeSquareSum = c => {
 [解答](src/reverse-vowels-of-a-string.js)
 
 ```JavaScript
-var reverseVowels = s => {
+const reverseVowels = s => {
     const vowels = 'aiueoAIUEO'
-    var lo = 0
-    var hi = s.length - 1
+    let lo = 0
+    let hi = s.length - 1
     s = s.split('')
     while (lo < hi) {
         if (vowels.indexOf(s[lo]) == -1) {
@@ -144,7 +144,7 @@ var reverseVowels = s => {
 [解答](src/valid-palindrome-ii.js)
 
 ```JavaScript
-var validPalindrome = s => {
+const validPalindrome = s => {
     let isPalindrome = (s, lo = 0, hi = s.length - 1) => {
         for (; lo < hi; lo++, hi--) {
             if (s[lo] != s[hi]) {
@@ -186,7 +186,7 @@ nums2 = [2,5,6],       n = 3
 [解答](src/merge-sorted-array-3.js)
 
 ```JavaScript
-var merge = (nums1, m, nums2, n) => {
+const merge = (nums1, m, nums2, n) => {
     let p1 = m - 1
     let p2 = n - 1
     let p = m + n - 1

@@ -3,7 +3,7 @@
  * @return {number}
  */
 
-let maxSubArray = (nums) => {
+const maxSubArray = (nums) => {
     let currSum = nums[0]
     let maxSum = currSum
     let resNums = nums.slice(1)

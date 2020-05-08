@@ -28,7 +28,7 @@
 [解答](src/assign-cookies.js)
 
 ```JavaScript
-let findContentChildren = (g, s) => {
+const findContentChildren = (g, s) => {
     let pg = g.length - 1, ps = s.length - 1, nums = 0
     g.sort((a, b) => a - b)
     s.sort((a, b) => a - b)
@@ -70,7 +70,7 @@ let findContentChildren = (g, s) => {
 [解答](src/non-overlapping-intervals.js)
 
 ```JavaScript
-let eraseOverlapIntervals = intervals => {
+const eraseOverlapIntervals = intervals => {
     let left = 0, right = 1, nums = 0
     intervals.sort((a, b) => a[0] - b[0])
     while (right < intervals.length) {
@@ -107,7 +107,7 @@ let eraseOverlapIntervals = intervals => {
 [解答](src/minimum-number-of-arrows-to-burst-balloons.js)
 
 ```JavaScript
-let findMinArrowShots = points => {
+const findMinArrowShots = points => {
     points.sort((a, b) => a[1] - b[1])
     points.length === 0 ? arrows = 0 : (arrows = 1, firstEnd = points[0][1])
     for (const point of points) {
@@ -140,7 +140,7 @@ let findMinArrowShots = points => {
 [解答](src/queue-reconstruction-by-height-2.js)
 
 ```JavaScript
-let reconstructQueue = people => {
+const reconstructQueue = people => {
     people.sort((a, b) => a[0] === b[0] ? a[1] - b[1] : b[0] - a[0])
     const queue = []
     for (const p of people) {
@@ -174,7 +174,7 @@ let reconstructQueue = people => {
 [解答](src/best-time-to-buy-and-sell-stock.js)
 
 ```JavaScript
-let maxProfit = prices => {
+const maxProfit = prices => {
     let maxProfit = 0
     let lowPrice = prices[0]
     for (let i = 1; i < prices.length; i ++) {
@@ -223,7 +223,7 @@ let maxProfit = prices => {
 [解答](src/best-time-to-buy-and-sell-stock-ii.js)
 
 ```JavaScript
-let maxProfit = prices => {
+const maxProfit = prices => {
     let profit = 0
     let currPrice = prices[0]
     for (let i = 1; i < prices.length; i++) {
@@ -259,7 +259,7 @@ let maxProfit = prices => {
 [解答](src/can-place-flowers.js)
 
 ```JavaScript
-let canPlaceFlowers = (flowerbed, n) => {
+const canPlaceFlowers = (flowerbed, n) => {
     let canPlace = 0
     for (let i = 0; i < flowerbed.length; i++) {
         if (flowerbed[i] === 0) {
@@ -309,7 +309,7 @@ s = "axc", t = "ahbgdc"
 [解答](src/is-subsequence.js)
 
 ```JavaScript
-let isSubsequence = (s, t) => {
+const isSubsequence = (s, t) => {
     let previous = -1
     let falseNum = 0
     let sArr = s.split('')
@@ -348,7 +348,7 @@ let isSubsequence = (s, t) => {
 [解答](src/non-decreasing-array.js)
 
 ```JavaScript
-let checkPossibility = (nums) => {
+const checkPossibility = (nums) => {
     let changed = 0
     for (i = 1; i < nums.length && changed < 2; i++) {
         if (nums[i] < nums[i - 1]) {
@@ -365,4 +365,123 @@ let checkPossibility = (nums) => {
 ```
 
 使目标数列成为非递减数列，即数列中的每个数都不比前一个数要小。因此在出现非递减（当前数比前一个数大），对数列中的数进行改变时，有两种方法：1. 让当前数等于前一个数；2. 让前一个数等于当前数。一般情况下，是因为前一个数过大了，因此应该让前一个数等于当前数，即将前一个数改小。还有一种情况是当前数过小，比之前的数还要小，此时应将当前数改大。当整个数组中改变的数超过一个时，返回false；否则返回true。  
-时间复杂度：O(N)：只遍历一次；空间复杂度O(1)。
+时间复杂度：O(N)：只遍历一次；空间复杂度：O(1)。
+
+# 10. 最大子序和
+
+[#53 最大子序和](https://leetcode-cn.com/problems/maximum-subarray/)
+
+给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+```html
+示例:
+输入: [-2,1,-3,4,-1,2,1,-5,4],
+输出: 6
+```
+
+## 暴力法
+
+[解答](src/maximum-subarray-1.js)
+
+```JavaScript
+const maxSubArray = (nums) => {
+    let max = []
+    for (let i = 0; i < nums.length; i++) {
+        let maxSum = Math.min(...nums)
+        let currentSum = 0
+        for (let j = i; j < nums.length; j++) {
+            currentSum += nums[j]
+            if (currentSum > maxSum) {
+                maxSum = currentSum
+            }
+        }
+        max.push(maxSum)
+    }
+    return Math.max(...max)
+}
+```
+
+使用两个循环，计算数组中各子序列相加的所有情况，找出其中最大的子序和。  
+时间复杂度：O(N^2)：使用了两次循环；空间复杂度：O(1)。
+
+## 贪心
+
+[解答](src/maximum-subarray-2.js)
+
+```JavaScript
+const maxSubArray = (nums) => {
+    let currSum = nums[0]
+    let maxSum = currSum
+    let resNums = nums.slice(1)
+    resNums.forEach((item) => {
+        currSum = Math.max(item, currSum + item)
+        maxSum = Math.max(currSum, maxSum)
+    })
+    return maxSum
+}
+```
+
+使用单循环遍历数组中的每个元素，使其与其他元素相加并比较大小，根据贪心算法，如果相加后和比当前元素大，则保留当前得到的子序和。最后比较所有得到的子序和，选出其中最大的。  
+时间复杂度：O(N)：只遍历一次；空间复杂度：O(1)。
+
+# 11. 划分字母区间
+
+[#763 划分字母区间（中等）](https://leetcode-cn.com/problems/partition-labels/)
+
+字符串 S 由小写字母组成。我们要把这个字符串划分为尽可能多的片段，同一个字母只会出现在其中的一个片段。返回一个表示每个字符串片段的长度的列表。
+```html
+示例:
+输入: S = "ababcbacadefegdehijhklij"
+输出: [9,7,8]
+```
+
+[解答](src/partition-labels.js)
+
+```JavaScript
+const partitionLabels = (S) => {
+    const charactersInS = []
+    const posInS = []
+    const partitionNum = []
+    let arrS = S.split('')
+    
+    arrS.forEach((item) => {
+        if (charactersInS.indexOf(item) === -1) {
+            charactersInS.push(item)
+        }
+    })
+
+    charactersInS.forEach((item) => {
+        const pos = []
+        let current = S.indexOf(item)
+        while (current > -1) {
+            current = S.indexOf(item, current)
+            if (current > -1) {
+                pos.push(current)
+                current += 1
+            } else {
+                break
+            }
+        }
+        pos.length > 1 ? pos.splice(1, pos.length - 2) : pos.push(pos[0])
+        posInS.push(pos)
+    })
+
+    let leftPos = 0
+    let partied = 0
+    for (let i = 1; i < posInS.length; i++) {
+        let res = posInS.slice(0, i)
+        if (posInS[i][0] > Math.max(...res.flat())) {
+            let partition = posInS.slice(leftPos, i)
+            let num = Math.max(...partition.flat()) - Math.min(...partition.flat()) + 1
+            partitionNum.push(num)
+            leftPos = i
+            partied += num
+        }
+    }
+    partitionNum.push(S.length - partied)
+    
+    return partitionNum
+}
+```
+
+方法分为三步。首先，获取字符串中所包含的所有字母；其次，获取各字母在字符串中所处的位置；最后，当某个字母的起始位置比之前所有字母的结束位置都要大时，在此处划分并计算所包含的字母数量。  
+时间复杂度：O(N)：只遍历一次；空间复杂度：O(N)。

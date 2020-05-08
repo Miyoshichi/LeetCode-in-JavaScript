@@ -4,7 +4,7 @@
  * @return {number}
  */
 
-let findContentChildren = (g, s) => {
+const findContentChildren = (g, s) => {
     let pg = g.length - 1, ps = s.length - 1, nums = 0
     g.sort((a, b) => a - b)
     s.sort((a, b) => a - b)

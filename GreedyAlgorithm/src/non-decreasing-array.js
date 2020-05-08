@@ -3,7 +3,7 @@
  * @return {boolean}
  */
 
-let checkPossibility = (nums) => {
+const checkPossibility = (nums) => {
     let changed = 0
     for (i = 1; i < nums.length && changed < 2; i++) {
         if (nums[i] < nums[i - 1]) {

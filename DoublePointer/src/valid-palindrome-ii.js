@@ -3,9 +3,9 @@
  * @return {boolean}
  */
 
-var validPalindrome = s => {
+const validPalindrome = s => {
 
-    let isPalindrome = (s, lo = 0, hi = s.length - 1) => {
+    const isPalindrome = (s, lo = 0, hi = s.length - 1) => {
         for (; lo < hi; lo++, hi--) {
             if (s[lo] != s[hi]) {
                 let bool = false
@@ -26,5 +26,5 @@ var validPalindrome = s => {
 }
 
 // test
-var s = 'abva'
+let s = 'abva'
 console.log(validPalindrome(s))

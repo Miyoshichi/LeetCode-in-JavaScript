@@ -3,7 +3,7 @@
  * @return {boolean}
  */
 
-var judgeSquareSum = c => {
+const judgeSquareSum = c => {
     for (a = 0; a * a <= c; a++) {
         b = Math.sqrt(c - a * a)
         if (b == Math.floor(b)) {
@@ -14,7 +14,7 @@ var judgeSquareSum = c => {
 }
 
 // test
-var c = 5
+let c = 5
 console.log(judgeSquareSum(c))
-var c = 3
+let c = 3
 console.log(judgeSquareSum(c))

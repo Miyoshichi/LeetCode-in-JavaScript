@@ -3,7 +3,7 @@
  * @return {string}
  */
 
-var frequencySort = s => {
+const frequencySort = s => {
     const discreteS = s.split('').sort()
     discreteS.push(undefined)
     const frequency = []

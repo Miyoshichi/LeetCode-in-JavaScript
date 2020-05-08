@@ -4,9 +4,9 @@
  * @return {number[]}
  */
 
-var twoSum = (numbers, target) => {
-    var lo = 0
-    var hi = numbers.length - 1
+const twoSum = (numbers, target) => {
+    let lo = 0
+    let hi = numbers.length - 1
     while (lo < hi) {
         if (numbers[lo] + numbers[hi] < target) {
             lo += 1
@@ -20,6 +20,6 @@ var twoSum = (numbers, target) => {
 }
 
 // test
-var numbers = [2, 7, 11, 15]
-var target = 9
+let numbers = [2, 7, 11, 15]
+let target = 9
 console.log(twoSum(numbers, target))

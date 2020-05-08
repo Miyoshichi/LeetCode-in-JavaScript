@@ -3,7 +3,7 @@
  * @return {number}
  */
 
-let maxSubArray = (nums) => {
+const maxSubArray = (nums) => {
     let max = []
     for (let i = 0; i < nums.length; i++) {
         let maxSum = Math.min(...nums)

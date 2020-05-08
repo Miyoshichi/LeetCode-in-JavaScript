@@ -4,7 +4,7 @@
  * @return {boolean}
  */
 
-let canPlaceFlowers = (flowerbed, n) => {
+const canPlaceFlowers = (flowerbed, n) => {
     let canPlace = 0
     for (let i = 0; i < flowerbed.length; i++) {
         if (flowerbed[i] === 0) {

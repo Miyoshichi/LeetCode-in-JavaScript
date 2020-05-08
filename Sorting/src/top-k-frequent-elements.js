@@ -4,7 +4,7 @@
  * @return {number[]}
  */
 
-var topKFrequent = (nums, k) => {
+const topKFrequent = (nums, k) => {
     nums.sort((a, b) => a - b)
     nums.push(NaN)
     const frequency = [0]

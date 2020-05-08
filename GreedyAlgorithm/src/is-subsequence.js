@@ -4,7 +4,7 @@
  * @return {boolean}
  */
 
-let isSubsequence = (s, t) => {
+const isSubsequence = (s, t) => {
     let previous = -1
     let falseNum = 0
     let sArr = s.split('')

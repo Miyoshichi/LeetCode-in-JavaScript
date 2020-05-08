@@ -3,7 +3,7 @@
  * @return {number}
  */
 
-let maxProfit = prices => {
+const maxProfit = prices => {
     let maxProfit = 0
     let lowPrice = prices[0]
     for (let i = 1; i < prices.length; i ++) {

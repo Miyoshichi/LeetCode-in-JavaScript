@@ -3,7 +3,7 @@
  * @return {number}
  */
 
-let eraseOverlapIntervals = intervals => {
+const eraseOverlapIntervals = intervals => {
     let left = 0, right = 1, nums = 0
     intervals.sort((a, b) => a[0] - b[0])
     while (right < intervals.length) {

@@ -3,7 +3,7 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 
-var sortColors = nums => {
+const sortColors = nums => {
     let p0 = 0, curr = 0, p2 = nums.length - 1
     for (;curr <= p2;) {
         if (nums[curr] === 0) {

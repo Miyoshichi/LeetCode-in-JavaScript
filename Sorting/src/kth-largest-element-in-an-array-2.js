@@ -4,7 +4,7 @@
  * @return {number}
  */
 
-var findKthLargest = (nums, k) => {
+const findKthLargest = (nums, k) => {
     let topK = nums.splice(0, k)
     for (let i = 0; i < nums.length; i++) {
         if (nums[i] > Math.min(...topK)) {

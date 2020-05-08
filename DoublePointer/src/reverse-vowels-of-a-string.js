@@ -3,7 +3,7 @@
  * @return {string}
  */
 
-var reverseVowels = s => {
+const reverseVowels = s => {
     const vowels = 'aiueoAIUEO'
     var lo = 0
     var hi = s.length - 1
@@ -26,6 +26,5 @@ var reverseVowels = s => {
 }
 
 // test
-var s = 'hello'
-vowelsReversed = reverseVowels(s)
-console.log(vowelsReversed)
+let s = 'hello'
+console.log(vowelsReversed(s))

@@ -5,7 +5,7 @@
 * [双指针](DoublePointer/DoublePointer.md)
 * [排序](Sorting/Sorting.md)
 * [贪心算法](GreedyAlgorithm/GreedyAlgorithm.md)
-* [二分查找]()
+* [二分查找](BinarySearch/BinarySearch.md)
 * [分治]()
 * [搜索]()
 * [动态规划]()
